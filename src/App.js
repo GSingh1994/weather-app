@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./App.css";
+import Weather from "./components/Weather";
+import "./styles/App.css";
 
 class App extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       input: "",
-      finalInput: "",
+      city: "",
     };
   }
   handleChange(e) {
@@ -18,21 +19,23 @@ class App extends Component {
   }
   handleSubmit(e) {
     this.setState((state) => ({
-      finalInput: state.input,
+      city: state.input,
     }));
+
     e.preventDefault();
   }
   render() {
+    const { city } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} type="text" />
         </form>
+
+        <Weather city={city} />
       </div>
     );
   }
 }
 
 export default App;
-
-// api=fce51865df10c606b4200dd86db4fdd5
