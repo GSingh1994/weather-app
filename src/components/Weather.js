@@ -18,14 +18,29 @@ const Weather = ({ city }) => {
   };
   return (
     <div className="Weather">
-      <div className="icon">
+      <div className="flag">
+        <img src="https://www.countryflags.io/in/flat/32.png"></img>
+      </div>
+      <div className="icon-bg">
         <i className="wi wi-night-sleet"></i>
       </div>
-      <div className="temp">63℃</div>
       <div className="about">rainy</div>
-      <div className="wind">11km/hr</div>
-      <div className="humidity">20%</div>
-      <div className="time">14:35</div>
+
+      <div className="aside">
+        <div className="wind flex">
+          <i className="wi wi-strong-wind"></i>
+          <div>11km/hr</div>
+        </div>
+        <div className="humidity flex">
+          <i className="wi wi-raindrop"></i> <div>20%</div>
+        </div>
+        <div className="pressure flex">
+          <i className="wi wi-barometer"></i> <div>1024mb</div>
+        </div>
+      </div>
+
+      <div className="temp">63℃</div>
+      {/* <div className="time">14:35</div> */}
     </div>
   );
 };

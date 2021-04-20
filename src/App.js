@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Weather from "./components/Weather";
-import "./styles/App.css";
+import "./styles/App.scss";
 
 class App extends Component {
   constructor(props) {
@@ -27,9 +27,13 @@ class App extends Component {
   render() {
     const { city } = this.state;
     return (
-      <div>
+      <div className="App">
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} type="text" />
+          <input
+            onChange={this.handleChange}
+            type="text"
+            placeholder="Enter city"
+          />
         </form>
 
         <Weather city={city} />
