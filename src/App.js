@@ -8,24 +8,42 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      input: "",
       city: "",
+      data: [],
     };
   }
   handleChange(e) {
     this.setState({
-      input: e.target.value,
+      city: e.target.value,
     });
   }
+  componentDidMount() {
+    this.fetchData("winnipeg");
+  }
   handleSubmit(e) {
-    this.setState((state) => ({
-      city: state.input,
-    }));
-
+    const { city } = this.state;
+    this.fetchData(city);
     e.preventDefault();
   }
+
+  fetchData(city) {
+    const apiKey = "fce51865df10c606b4200dd86db4fdd5";
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          data: data,
+          city: "",
+        });
+      })
+      .catch((err) => console.log(err));
+    console.log("API called");
+  }
   render() {
-    const { city } = this.state;
+    const { data } = this.state;
+    // console.log(data);
     return (
       <div className="App">
         <form onSubmit={this.handleSubmit}>
@@ -35,8 +53,7 @@ class App extends Component {
             placeholder="Enter city"
           />
         </form>
-
-        <Weather city={city} />
+        {data.length <= 1 ? console.log("Loading") : <Weather data={data} />}
       </div>
     );
   }
