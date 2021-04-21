@@ -26,7 +26,7 @@ const Weather = ({ data }) => {
         </div>
       </div>
 
-      <div className="temp">{data.main.temp}°</div>
+      <div className="temp">{Math.floor(data.main.temp)}°</div>
       {/* <div className="time">14:35</div> */}
     </div>
   );

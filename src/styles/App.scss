@@ -17,7 +17,14 @@
 }
 .Weather {
   z-index: 0;
-  background-color: #1d1d1d;
+  background-image: linear-gradient(
+    to left bottom,
+    #030303,
+    #100f10,
+    #181818,
+    #201f20,
+    #282627
+  );
   color: white;
   display: flex;
   flex-direction: column;
@@ -37,10 +44,11 @@
     position: absolute;
     bottom: 10px;
     left: 10px;
-    height: 4.3rem;
+    height: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 0.8rem;
     i {
       width: 1.7rem;
     }
