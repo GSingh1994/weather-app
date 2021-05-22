@@ -43,7 +43,6 @@ class App extends Component {
   }
   render() {
     const { data } = this.state;
-    // console.log(data);
     return (
       <div className="App">
         <form onSubmit={this.handleSubmit}>
@@ -51,6 +50,7 @@ class App extends Component {
             onChange={this.handleChange}
             type="text"
             placeholder="Enter city"
+            autoFocus
           />
         </form>
         {data.length <= 1 ? console.log("Loading") : <Weather data={data} />}
